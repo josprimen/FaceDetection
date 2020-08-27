@@ -11,10 +11,10 @@ from cv2 import destroyAllWindows
 classifier = CascadeClassifier('haarcascade_frontalface_default.xml')
 
 #cargamos una foto de prueba
-pixels = imread('test2.jpg')
+pixels = imread('image/foto grupal.jpg')
 
-#realizamos el reconocimiento facial
-bboxes = classifier.detectMultiScale(pixels)
+#realizamos el reconocimiento facial. 1.1 significa ampliar la foto un 10% y 3 indica el nivel de fiabilidad de la deteccion
+bboxes = classifier.detectMultiScale(pixels, 1.1, 3)
 #representamos los cuadros delimitadores de los rostros detectados
 for box in bboxes:
     print(box)
