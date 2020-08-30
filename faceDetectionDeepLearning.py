@@ -3,8 +3,7 @@ from mtcnn.mtcnn import MTCNN
 #print(mtcnn.__version__)
 from matplotlib import pyplot
 from matplotlib.patches import Rectangle
-
-from PIL import Image
+from matplotlib.patches import Circle
 
 
 
@@ -24,6 +23,11 @@ def draw_image_with_boxes(filename, result_list):
         rect = Rectangle((x,y), width, height, fill=False, color='white')
         #dibujamos los cuadros
         ax.add_patch(rect)
+        #añadimos los puntos de ojos, nariz y boca
+        for key, value in result['keypoints'].items():
+            #creamos y dibujamos los puntos
+            dot = Circle(value, radius=2, color='white')
+            ax.add_patch(dot)
     #mostramos por pantalla
     pyplot.show()
 
